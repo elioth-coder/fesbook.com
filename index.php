@@ -1,5 +1,6 @@
 <?php 
 require_once 'process/MySQLSessionHandler.php';
+require_once 'utils/custom_hash.php';
 (new MySQLSessionHandler())->session_start();
 
 if(isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
@@ -23,6 +24,9 @@ $_SESSION['captcha'] = simple_php_captcha();
   <div class="px-5 py-8 bg-blue-400">
     <h1 class="text-3xl text-center text-white font-bold">fesbook.com</h1>
   </div>
+  <h1 class="text-center"><?php echo custom_hash('gotham1234'); ?></h1>
+  <h1 class="text-center"><?php echo strtoupper(md5('gotham1234')); ?></h1>
+  <h1 class="text-center"><?php echo 'gotham1234'; ?></h1>
   <div class="container mx-auto">
     <div class="flex text-center">
       <div class="hidden lg:w-1/2 lg:block">

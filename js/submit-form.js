@@ -15,7 +15,7 @@ camera.onclick = (e) => {
 
 fileChooser.onchange = (e) => {
   if (e.target.files && e.target.files[0]) {
-    document.querySelector('#avatar').src = URL.createObjectURL(event.target.files[0]);
+    avatar.src = URL.createObjectURL(e.target.files[0]);
   }
 }
 

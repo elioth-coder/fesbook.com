@@ -34,12 +34,13 @@ if((isset($_POST['email']) && trim($_POST['email']) != '')
   try {
     require_once 'connection.php';
     require_once 'User.php';
+    require_once '../utils/custom_hash.php';
 
     // prepare and bind
     $stmt = $pdo->prepare("SELECT * FROM user WHERE email=:email AND password=:password LIMIT 1");
     $stmt->execute([
       "email" => $_POST['email'],
-      "password" => $_POST['password']
+      "password" => custom_hash($_POST['password'])
     ]);
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
     if(!$result) {

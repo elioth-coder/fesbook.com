@@ -42,7 +42,7 @@ function upload($file, $target_dir) {
   if (move_uploaded_file($file["tmp_name"], $target_file)) {
     return array(
       "img" => $file_name,
-      "message" => "The file ". htmlspecialchars( basename( $file["name"])). " has been uploaded.",
+      "message" => "The file " . basename( $file["name"]) . " has been uploaded.",
       "status" => "success"
     );
   } else {

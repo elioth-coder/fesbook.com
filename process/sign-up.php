@@ -40,6 +40,7 @@ if((isset($_POST['first_name']) && trim($_POST['first_name']) != '')
 
   try {
     require_once 'connection.php';
+    require_once '../utils/custom_hash.php';
 
     // prepare and bind
     $stmt = $pdo->prepare("INSERT INTO user (first_name, last_name, birthdate, gender, email, password, avatar) 
@@ -58,7 +59,7 @@ if((isset($_POST['first_name']) && trim($_POST['first_name']) != '')
     $birthdate = $_POST['birthdate'];
     $gender = $_POST['gender'];
     $email = $_POST['email'];
-    $password = $_POST['password'];
+    $password = custom_hash($_POST['password']);
     $avatar = ($fileUpload['status'] == 'error') ? "./assets/account.png" : "./uploads/" . $fileUpload['img'];
     $stmt->execute();
   
